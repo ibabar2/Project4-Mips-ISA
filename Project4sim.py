@@ -221,16 +221,16 @@ def execute_operation(MachineCodeInHex,data_mem, registerArray, pc, MulticycleIn
 def simulator(ImemArray):
     ImemFile = open(ImemArray, "r")
     instr_mem = FileToArray(ImemFile)
-    registerArray = [0, 0, 0, 0, 0, 0, 0, 0]  # Use an register for $0 - $7 ($0 will not change)
-    data_mem = [0] * 1023  # Create a data memory array
+    registerArray = [0, 0, 0, 0, 0, 0, 0, 0] 
+    data_mem = [0] * 1023 
     pc = 0
     index = 0
     MachineCodeInHex = instr_mem[pc]
     MachineCodeInHex_old = "0xffffffff"
     MachineCodeInHex_new = "0xffffffff"
-    MulticycleInstrucCount = [0, 0, 0]    # Number of 3, 4, and 5 cycle CPU instructions, respectively
-    dic = 0     # Dynamic Instruction Count
-    pipe_delays = [0, 0]    # Number of Data Hazards and Control Hazards, respectively
+    MulticycleInstrucCount = [0, 0, 0]    
+    dic = 0   
+    pipe_delays = [0, 0]    
     while MachineCodeInHex != "0x1000FFFF" or MachineCodeInHex != "0x1000ffff":
         if MachineCodeInHex == "0x1000ffff":
             dic = dic + 1
